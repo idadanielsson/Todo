@@ -1,3 +1,78 @@
+body {
+  background-color: #ffdab9;
+  margin: 0;
+  padding: 0;
+}
 
+.todo {
+  width: 100%;
+}
+
+.todo__title {
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 36px;
+  display: flex;
+}
+
+.todo__form {
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  display: flex;
+}
+
+.todo__input, .todo button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.todo__btn {
+  color: #ffdab9;
+  cursor: pointer;
+  transition: all .3 ease;
+  background-color: #fff;
+  border: none;
+}
+
+.bi {
+  font-size: 20px;
+}
+
+form button:hover {
+  color: #fff;
+  background-color: #ffdab9;
+}
+
+.list {
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  display: flex;
+}
+
+.list__container {
+  min-width: 30%;
+  list-style-type: none;
+}
+
+.list__item {
+  color: #000;
+  background-color: #fff;
+  justify-content: space-between;
+  margin: .5rem;
+  padding: 15px;
+  font-size: 20px;
+  display: flex;
+}
+
+.list__checkbtn {
+  background-color: #fff;
+  border: none;
+  font-size: 20px;
+}
 
 /*# sourceMappingURL=index.b10d73a7.css.map */
