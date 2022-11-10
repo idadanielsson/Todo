@@ -1,9 +1,7 @@
-
 class Todo {
-    constructor(todoItem) {
-        this.todoItem = todoItem;
-        
-    }
+  constructor(todoItem) {
+    this.todoItem = todoItem;
+  }
 }
 
 let firstTodo = new Todo("Promenad");
@@ -12,55 +10,72 @@ let thirdTodo = new Todo("Träna");
 let fourthTodo = new Todo("Handla mat");
 let fifthTodo = new Todo("Göra matlådor");
 
-let todoList = [firstTodo, secondTodo, thirdTodo, fourthTodo, fifthTodo];
 
-let cart = [];
+
+
+let tasks = [firstTodo, secondTodo, thirdTodo, fourthTodo, fifthTodo];
+
 
 let listContainer = document.getElementById("myList");
-let i = 0;
 
-for (let i = 0; i < todoList.length; i++) {
-    
+function createHTML() {
+
+  for (let i = 0; i < tasks.length; i++) {
     let item = document.createElement("li");
-    let span = document.createElement("span");
+    let todoDiv = document.createElement("div");
     let checkButton = document.createElement("button");
-    
-      
+    let deleteButton = document.createElement("button");
+
     item.classList.add("list__item");
     listContainer.appendChild(item);
-    
-    span.innerHTML= todoList[i].todoItem;
-    span.className= "list__item__close";
-    item.appendChild(span);
-    
+    item.innerHTML = tasks[i].todoItem;
+
+    todoDiv.classList.add("list__btncontainer");
+    item.appendChild(todoDiv);
 
     checkButton.innerHTML = '<i class="bi bi-check-circle"></i>';
     checkButton.classList.add("list__checkbtn");
-    item.appendChild(checkButton);
+    todoDiv.appendChild(checkButton);
 
+    deleteButton.innerHTML = '<i class="bi bi-trash3"></i>';
+    deleteButton.classList.add("list__deletebtn");
+    todoDiv.appendChild(deleteButton);
+
+    deleteButton.addEventListener("click", () => {
+      removeItem(tasks[i]);
+    });
     checkButton.addEventListener("click", () => {
-        handleClick(todoList[i]);
+      checkItem(tasks[i]);
+    });
 
-});
+    function removeItem() {
+      item.remove();
+      console.log(tasks);
+
+      
+    }
+
+    function checkItem(tasks) {
+      item.classList.toggle("complited");
+    }
+  }
 }
 
-function handleClick(Todo) {
-    console.log("Du klickade på", Todo);
+createHTML();
 
-    cart.push(Todo);
+let addBtn = document.getElementById("addbtn");
+addBtn.addEventListener("click", addTask);
+
+function addTask() {
+  listContainer.innerHTML = "";
+  let todoInput = document.getElementById("todoinput");
+  let newItem = new Todo(todoInput.value);
+  todoInput.value = "";
+  tasks.push(newItem);
+  localStorage.setItem('tasks', JSON.stringify(tasks)); 
+  
+  createHTML();
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

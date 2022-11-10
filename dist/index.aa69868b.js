@@ -8,35 +8,57 @@ let secondTodo = new Todo("Plugga");
 let thirdTodo = new Todo("Tr\xe4na");
 let fourthTodo = new Todo("Handla mat");
 let fifthTodo = new Todo("G\xf6ra matl\xe5dor");
-let todoList = [
+let tasks = [
     firstTodo,
     secondTodo,
     thirdTodo,
     fourthTodo,
     fifthTodo
 ];
-let cart = [];
 let listContainer = document.getElementById("myList");
-let i = 0;
-for(let i1 = 0; i1 < todoList.length; i1++){
-    let item = document.createElement("li");
-    let span = document.createElement("span");
-    let checkButton = document.createElement("button");
-    item.classList.add("list__item");
-    listContainer.appendChild(item);
-    span.innerHTML = todoList[i1].todoItem;
-    span.className = "list__item__close";
-    item.appendChild(span);
-    checkButton.innerHTML = '<i class="bi bi-check-circle"></i>';
-    checkButton.classList.add("list__checkbtn");
-    item.appendChild(checkButton);
-    checkButton.addEventListener("click", ()=>{
-        handleClick(todoList[i1]);
-    });
+function createHTML() {
+    for(let i = 0; i < tasks.length; i++){
+        let item = document.createElement("li");
+        let todoDiv = document.createElement("div");
+        let checkButton = document.createElement("button");
+        let deleteButton = document.createElement("button");
+        item.classList.add("list__item");
+        listContainer.appendChild(item);
+        item.innerHTML = tasks[i].todoItem;
+        todoDiv.classList.add("list__btncontainer");
+        item.appendChild(todoDiv);
+        checkButton.innerHTML = '<i class="bi bi-check-circle"></i>';
+        checkButton.classList.add("list__checkbtn");
+        todoDiv.appendChild(checkButton);
+        deleteButton.innerHTML = '<i class="bi bi-trash3"></i>';
+        deleteButton.classList.add("list__deletebtn");
+        todoDiv.appendChild(deleteButton);
+        deleteButton.addEventListener("click", ()=>{
+            removeItem(tasks[i]);
+        });
+        checkButton.addEventListener("click", ()=>{
+            checkItem(tasks[i]);
+        });
+        function removeItem() {
+            item.remove();
+            console.log(tasks);
+        }
+        function checkItem(tasks) {
+            item.classList.toggle("complited");
+        }
+    }
 }
-function handleClick(Todo) {
-    console.log("Du klickade p\xe5", Todo);
-    cart.push(Todo);
+createHTML();
+let addBtn = document.getElementById("addbtn");
+addBtn.addEventListener("click", addTask);
+function addTask() {
+    listContainer.innerHTML = "";
+    let todoInput = document.getElementById("todoinput");
+    let newItem = new Todo(todoInput.value);
+    todoInput.value = "";
+    tasks.push(newItem);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    createHTML();
 }
 
 //# sourceMappingURL=index.aa69868b.js.map

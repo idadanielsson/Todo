@@ -4,38 +4,16 @@ body {
   padding: 0;
 }
 
-.todo {
-  width: 100%;
-}
-
-.todo__title {
+.title, .form {
   justify-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 36px;
+  font-size: 24px;
   display: flex;
 }
 
-.todo__form {
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  display: flex;
-}
-
-.todo__input, .todo button {
+.form__input, .form__btn {
   background-color: #fff;
   border: none;
-  outline: none;
-  padding: 20px;
-  font-size: 20px;
-}
-
-.todo__btn {
-  color: #ffdab9;
-  cursor: pointer;
-  transition: all .3 ease;
-  background-color: #fff;
-  border: none;
+  padding: 10px 20px;
 }
 
 .bi {
@@ -44,7 +22,7 @@ body {
 
 form button:hover {
   color: #fff;
-  background-color: #ffdab9;
+  background-color: #edeaea;
 }
 
 .list {
@@ -55,7 +33,7 @@ form button:hover {
 }
 
 .list__container {
-  min-width: 30%;
+  width: 40%;
   list-style-type: none;
 }
 
@@ -64,8 +42,8 @@ form button:hover {
   background-color: #fff;
   justify-content: space-between;
   margin: .5rem;
-  padding: 15px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 18px;
   display: flex;
 }
 
@@ -73,6 +51,11 @@ form button:hover {
   background-color: #fff;
   border: none;
   font-size: 20px;
+}
+
+.complited {
+  opacity: .5;
+  text-decoration: line-through;
 }
 
 /*# sourceMappingURL=index.b10d73a7.css.map */
