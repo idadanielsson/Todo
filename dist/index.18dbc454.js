@@ -537,6 +537,7 @@ var _todo = require("./models/todo");
 let todoInput = document.getElementById("todoinput");
 let addBtn = document.getElementById("addbtn");
 let listContainer = document.getElementById("myList");
+addBtn.addEventListener("click", addTask);
 let firstTodo = new (0, _todo.Todo)("Promenad");
 let secondTodo = new (0, _todo.Todo)("Plugga");
 let thirdTodo = new (0, _todo.Todo)("Tr\xe4na");
@@ -549,7 +550,6 @@ let tasks = [
     fourthTodo,
     fifthTodo
 ];
-let task = [];
 function createHTML() {
     listContainer.innerHTML = "";
     for(let i = 0; i < tasks.length; i++){
@@ -569,11 +569,8 @@ function createHTML() {
         deleteButton.innerHTML = '<i class="bi bi-trash3"></i>';
         deleteButton.classList.add("list__deletebtn");
         todoDiv.appendChild(deleteButton);
-        deleteButton.addEventListener("click", (e)=>{
-            let index = e.target.getAttribute("value");
-            tasks.splice(index, 1);
-            console.log(tasks);
-            item.remove();
+        deleteButton.addEventListener("click", ()=>{
+            removeButton(i);
         });
         checkButton.addEventListener("click", ()=>{
             checkItem(i);
@@ -581,21 +578,33 @@ function createHTML() {
         function checkItem() {
             console.log(tasks);
             tasks[i].done = !tasks[i].done;
+            localStorage.setItem("tasks", JSON.stringify(tasks));
             createHTML();
         }
     }
 }
-createHTML();
-addBtn.addEventListener("click", addTask);
-// Functions
-function addTask() {
-    listContainer.innerHTML = "";
-    let todoInput = document.getElementById("todoinput");
-    let newItem = new (0, _todo.Todo)(todoInput.value);
-    todoInput.value = "";
-    tasks.push(newItem);
+function removeButton(deleteButton) {
+    tasks.splice(deleteButton, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     createHTML();
 }
+createHTML();
+function addTask(e) {
+    e.preventDefault();
+    let newItem = new (0, _todo.Todo)(todoInput.value);
+    if (todoInput.value === "") alert("OBS! Du m\xe5ste fylla i rutan med text");
+    else {
+        tasks.push(newItem);
+        createHTML();
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        todoInput.value = "";
+    }
+}
+let getTodoFromLs = ()=>{
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+    createHTML();
+};
+window.addEventListener("DOMContentLoaded", getTodoFromLs);
 
 },{"./models/todo":"jP90r"}],"jP90r":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

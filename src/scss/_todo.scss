@@ -16,7 +16,6 @@
            width: 30%;
         }
     }
-
     &__item {
         display: flex;
         justify-content: space-between;
@@ -29,7 +28,6 @@
         border-radius: 0.5rem;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
-
     &__checkbtn, &__deletebtn {
         background-color: white;
         color: v.$secondaryColor;
@@ -39,7 +37,6 @@
             color: rgb(9, 198, 9);
         }
     }
-
     &__deletebtn {
        
         :hover {
@@ -48,7 +45,6 @@
     }
     
 }
-
 .complited {
     text-decoration: line-through;
     opacity: 0.5;

@@ -5,6 +5,8 @@ let todoInput = document.getElementById("todoinput");
 let addBtn = document.getElementById("addbtn");
 let listContainer = document.getElementById("myList");
 
+addBtn.addEventListener("click", addTask);
+
 let firstTodo = new Todo("Promenad");
 let secondTodo = new Todo("Plugga");
 let thirdTodo = new Todo("Träna");
@@ -12,7 +14,6 @@ let fourthTodo = new Todo("Handla mat");
 let fifthTodo = new Todo("Göra matlådor");
 
 let tasks = [firstTodo, secondTodo, thirdTodo, fourthTodo, fifthTodo];
-let task = [];
 
 function createHTML() {
 
@@ -43,11 +44,8 @@ function createHTML() {
     deleteButton.classList.add("list__deletebtn");
     todoDiv.appendChild(deleteButton);
 
-    deleteButton.addEventListener("click", (e) => {
-       let index = e.target.getAttribute("value");
-       tasks.splice(index, 1);
-       console.log(tasks);
-       item.remove();   
+    deleteButton.addEventListener("click", () => {
+       removeButton(i);  
     });
 
     checkButton.addEventListener("click", () => {
@@ -57,27 +55,43 @@ function createHTML() {
     function checkItem() {
         console.log(tasks);
         tasks[i].done = !tasks[i].done;
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         createHTML();
         
     }
   }
 }
 
+function removeButton(deleteButton) {
+  tasks.splice(deleteButton, 1);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  createHTML();
+}
+
 createHTML();
 
-addBtn.addEventListener("click", addTask);
-
-// Functions
-function addTask() {
-  listContainer.innerHTML = "";
-  let todoInput = document.getElementById("todoinput");
+function addTask(e) {
+  e.preventDefault();
   let newItem = new Todo(todoInput.value);
-  todoInput.value = "";
-  
+  if(todoInput.value === ""){
+    alert("OBS! Du måste fylla i rutan med text");
+  }else{
   tasks.push(newItem);
   createHTML();
-
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  todoInput.value = "";
+  }
 }
+
+let getTodoFromLs = () => {
+  tasks = JSON.parse(localStorage.getItem("tasks"));
+  createHTML();
+}
+
+window.addEventListener("DOMContentLoaded", getTodoFromLs);
+  
+
+
 
 
 
