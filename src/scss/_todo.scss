@@ -1,0 +1,54 @@
+@use "variables" as v;
+
+.list {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+    &__container {
+        min-width: 30%;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        color: black;
+        margin-top: 0.5rem;
+        padding: 15px;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        border-radius: 0.5rem;
+        box-shadow: 2px 2px 4px 1px gray;;
+    }
+
+    &__checkbtn, &__deletebtn {
+        background-color: white;
+        color: v.$secondaryColor;
+        border: none;
+        
+        :hover {
+            color: rgb(9, 198, 9);
+        }
+    }
+
+    &__deletebtn {
+       
+        :hover {
+            color: red;
+        }
+    }
+    
+}
+
+.complited {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+
+
+
