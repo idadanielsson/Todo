@@ -22,13 +22,15 @@ body {
 
     &__input, &__btn {
         padding: 10px 20px;
-        margin: 0 2px;
         border: none;
         background-color: white;
-        font-size: 16px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        box-shadow: 2px 2px 4px 1px gray;
-        border-radius: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        font-size: 18px;
+    }
+
+    &__input {
+        border-radius: 10px 0 0 10px;
+        
     }
 
     &__btn {
@@ -36,6 +38,7 @@ body {
         background: v.$secondaryColor;
         cursor: pointer;
         transition: all 0.3s;
+        border-radius: 0 10px 10px 0;
         
         :hover {
             color: gray;

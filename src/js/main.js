@@ -1,11 +1,9 @@
 import { Todo } from "./models/todo";
 
+// Selectors 
 let todoInput = document.getElementById("todoinput");
 let addBtn = document.getElementById("addbtn");
-
-
-
-localStorage.setItem("todo-info", JSON.stringify(Todo));
+let listContainer = document.getElementById("myList");
 
 let firstTodo = new Todo("Promenad");
 let secondTodo = new Todo("Plugga");
@@ -13,11 +11,8 @@ let thirdTodo = new Todo("Träna");
 let fourthTodo = new Todo("Handla mat");
 let fifthTodo = new Todo("Göra matlådor");
 
-let saveTask = JSON.stringify(Todo);
-
 let tasks = [firstTodo, secondTodo, thirdTodo, fourthTodo, fifthTodo];
-
-let listContainer = document.getElementById("myList");
+let task = [];
 
 function createHTML() {
 
@@ -68,22 +63,26 @@ function createHTML() {
   }
 }
 
-
-
 createHTML();
 
 addBtn.addEventListener("click", addTask);
 
-
+// Functions
 function addTask() {
   listContainer.innerHTML = "";
   let todoInput = document.getElementById("todoinput");
   let newItem = new Todo(todoInput.value);
   todoInput.value = "";
+  
   tasks.push(newItem);
   createHTML();
 
 }
+
+
+
+
+
 
 
 

@@ -533,15 +533,15 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"1SICI":[function(require,module,exports) {
 var _todo = require("./models/todo");
+// Selectors 
 let todoInput = document.getElementById("todoinput");
 let addBtn = document.getElementById("addbtn");
-localStorage.setItem("todo-info", JSON.stringify((0, _todo.Todo)));
+let listContainer = document.getElementById("myList");
 let firstTodo = new (0, _todo.Todo)("Promenad");
 let secondTodo = new (0, _todo.Todo)("Plugga");
 let thirdTodo = new (0, _todo.Todo)("Tr\xe4na");
 let fourthTodo = new (0, _todo.Todo)("Handla mat");
 let fifthTodo = new (0, _todo.Todo)("G\xf6ra matl\xe5dor");
-let saveTask = JSON.stringify((0, _todo.Todo));
 let tasks = [
     firstTodo,
     secondTodo,
@@ -549,7 +549,7 @@ let tasks = [
     fourthTodo,
     fifthTodo
 ];
-let listContainer = document.getElementById("myList");
+let task = [];
 function createHTML() {
     listContainer.innerHTML = "";
     for(let i = 0; i < tasks.length; i++){
@@ -587,6 +587,7 @@ function createHTML() {
 }
 createHTML();
 addBtn.addEventListener("click", addTask);
+// Functions
 function addTask() {
     listContainer.innerHTML = "";
     let todoInput = document.getElementById("todoinput");

@@ -1,4 +1,5 @@
 @use "variables" as v;
+@use "mixins" as m;
 
 .list {
    display: flex;
@@ -6,10 +7,14 @@
    align-items: center;
 
     &__container {
-        min-width: 30%;
+        width: 60%;
         list-style-type: none;
         margin: 0;
         padding: 0;
+
+        @include m.desktop {
+           width: 30%;
+        }
     }
 
     &__item {
@@ -22,7 +27,7 @@
         font-size: 16px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         border-radius: 0.5rem;
-        box-shadow: 2px 2px 4px 1px gray;;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
 
     &__checkbtn, &__deletebtn {
