@@ -55,7 +55,7 @@ function createHTML() {
     function checkItem() {
         console.log(tasks);
         tasks[i].done = !tasks[i].done;
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        // localStorage.setItem("tasks", JSON.stringify(tasks));
         createHTML();
         
     }
@@ -64,7 +64,7 @@ function createHTML() {
 
 function removeButton(deleteButton) {
   tasks.splice(deleteButton, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  // localStorage.setItem("tasks", JSON.stringify(tasks));
   createHTML();
 }
 
@@ -78,17 +78,17 @@ function addTask(e) {
   }else{
   tasks.push(newItem);
   createHTML();
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  // localStorage.setItem("tasks", JSON.stringify(tasks));
   todoInput.value = "";
   }
 }
 
-let getTodoFromLs = () => {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
-  createHTML();
-}
+// let getTodoFromLs = () => {
+//   tasks = JSON.parse(localStorage.getItem("tasks"));
+//   createHTML();
+// }
 
-window.addEventListener("DOMContentLoaded", getTodoFromLs);
+// window.addEventListener("DOMContentLoaded", getTodoFromLs);
   
 
 

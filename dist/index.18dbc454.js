@@ -578,14 +578,14 @@ function createHTML() {
         function checkItem() {
             console.log(tasks);
             tasks[i].done = !tasks[i].done;
-            localStorage.setItem("tasks", JSON.stringify(tasks));
+            // localStorage.setItem("tasks", JSON.stringify(tasks));
             createHTML();
         }
     }
 }
 function removeButton(deleteButton) {
     tasks.splice(deleteButton, 1);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    // localStorage.setItem("tasks", JSON.stringify(tasks));
     createHTML();
 }
 createHTML();
@@ -596,15 +596,14 @@ function addTask(e) {
     else {
         tasks.push(newItem);
         createHTML();
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        // localStorage.setItem("tasks", JSON.stringify(tasks));
         todoInput.value = "";
     }
-}
-let getTodoFromLs = ()=>{
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-    createHTML();
-};
-window.addEventListener("DOMContentLoaded", getTodoFromLs);
+} // let getTodoFromLs = () => {
+ //   tasks = JSON.parse(localStorage.getItem("tasks"));
+ //   createHTML();
+ // }
+ // window.addEventListener("DOMContentLoaded", getTodoFromLs);
 
 },{"./models/todo":"jP90r"}],"jP90r":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
